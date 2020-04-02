@@ -1,5 +1,10 @@
 {
 	"name": "vscode-neosdk",
+	"author": {
+		"name": "Ganesan Karuppasamy",
+		"email": "kbganesan87@gmail.com",
+		"url": "https://github.com/ckganesan"
+	},
 	"displayName": "Neo Java Web SDK",
 	"description": "Debug or run your java war package in Neo Java Web SDK",
 	"version": "0.0.1",
@@ -9,13 +14,26 @@
 	"categories": [
 		"Programming Languages",
 		"Extension Packs",
+		"Debuggers",
 		"Other"
 	],
 	"keywords": [
 		"Neo Java Web SDK",
 		"Java",
-		"Tomcat"
+		"Tomcat",
+		"Server"
 	],
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/ckganesan/vscode-neosdk"
+	},
+	"bugs": {
+		"url": "https://github.com/ckganesan/vscode-neosdk/issues",
+		"email": "kbganesan87@gmail.com"
+	},
+	"files": [],
+	"license": "https://github.com/ckganesan/vscode-neosdk/blob/master/LICENSE.txt",
+	"homepage": "https://github.com/ckganesan/vscode-neosdk/blob/master/README.md",
 	"activationEvents": [
 		"onCommand:extension.helloWorld"
 	],
@@ -25,10 +43,26 @@
 			{
 				"command": "extension.helloWorld",
 				"title": "Hello World"
-			}
+			},
+			{
+				"command": "tomcat.tree.refresh",
+				"title": "Refresh Tomcat Server Tree",
+				"category": "Tomcat",
+				"icon": "plus"
+			},
+			{
+				"command": "tomcat.server.add",
+				"title": "Add Tomcat Server",
+				"category": "Tomcat",
+				"icon": ""
+			}		
 		],
 		"views": {
 			"explorer": [
+				{
+					"id": "neoJavaTomcatServer",
+					"name": "Neo Java Tomcat Servers"
+				}
 			]
 		},
 		"menus": {
@@ -55,7 +89,6 @@
 			{
 				"title": "Java Web Tomcat",
 				"properties": {
-
 				}
 			}
 		]
