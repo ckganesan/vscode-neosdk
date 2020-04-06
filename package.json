@@ -35,38 +35,109 @@
 	"license": "https://github.com/ckganesan/vscode-neosdk/blob/master/LICENSE.txt",
 	"homepage": "https://github.com/ckganesan/vscode-neosdk/blob/master/README.md",
 	"activationEvents": [
-		"onCommand:extension.helloWorld"
+		"onCommand:neosdk.tree.refresh",
+		"onCommand:neosdk.server.add",
+		"onCommand:neosdk.server.restartAll",
+		"onView:neoJavaTomcatServerExplorer"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "extension.helloWorld",
-				"title": "Hello World"
+				"command": "neosdk.showVersionInfo",
+				"title": "Show Neo SDK Version Information",
+				"category": "NeoSDK",
+				"icon": {
+					"light": "resources/icons/light/info.svg",
+					"dark": "resources/icons/dark/info.svg"
+				}
 			},
 			{
-				"command": "tomcat.tree.refresh",
-				"title": "Refresh Tomcat Server Tree",
-				"category": "Tomcat",
-				"icon": "plus"
+				"command": "neosdk.tree.refresh",
+				"title": "Refresh Java Web Tomcat Server Tree",
+				"category": "NeoSDK",
+				"icon": {
+					"light": "resources/icons/light/refresh.svg",
+					"dark": "resources/icons/dark/refresh.svg"
+				}
 			},
 			{
-				"command": "tomcat.server.add",
-				"title": "Add Tomcat Server",
+				"command": "neosdk.server.add",
+				"title": "Add Java Web Tomcat Server",
 				"category": "Tomcat",
-				"icon": ""
-			}		
+				"icon": {
+					"light": "resources/icons/light/add.svg",
+					"dark": "resources/icons/dark/add.svg"
+				}
+			},
+			{
+				"command": "neosdk.server.stopAll",
+				"title": "Stop All Java Web Tomcat Servers",
+				"category": "Tomcat",
+				"icon": {
+					"light": "resources/icons/light/stop.svg",
+					"dark": "resources/icons/dark/stop.svg"
+				}
+			},
+			{
+				"command": "neosdk.server.restartAll",
+				"title": "Restart All Java Web Tomcat Servers",
+				"category": "Tomcat",
+				"icon": {
+					"light": "resources/icons/light/restart.svg",
+					"dark": "resources/icons/dark/restart.svg"
+				}
+			},
+			{
+				"command": "neosdk.server.deleteAll",
+				"title": "Delete All Java Web Tomcat Servers",
+				"category": "Tomcat",
+				"icon": {
+					"light": "resources/icons/light/delete.svg",
+					"dark": "resources/icons/dark/delete.svg"
+				}
+			}
 		],
 		"views": {
 			"explorer": [
 				{
-					"id": "neoJavaTomcatServer",
+					"id": "neoJavaTomcatServerExplorer",
 					"name": "Neo Java Tomcat Servers"
 				}
 			]
 		},
 		"menus": {
 			"view/title": [
+				{
+					"command": "neosdk.showVersionInfo",
+					"when": "view == neoJavaTomcatServerExplorer",
+					"group": "navigation@0"
+				},
+				{
+					"command": "neosdk.tree.refresh",
+					"when": "view == neoJavaTomcatServerExplorer",
+					"group": "navigation@1"
+				},
+				{
+					"command": "neosdk.server.add",
+					"when": "view == neoJavaTomcatServerExplorer",
+					"group": "navigation@2"
+				},
+				{
+					"command": "neosdk.server.stopAll",
+					"when": "view == neoJavaTomcatServerExplorer",
+					"group": "navigation@3"
+				},
+				{
+					"command": "neosdk.server.restartAll",
+					"when": "view == neoJavaTomcatServerExplorer",
+					"group": "navigation@4"
+				},
+				{
+					"command": "neosdk.server.deleteAll",
+					"when": "view == neoJavaTomcatServerExplorer",
+					"group": "navigation@5"
+				}
 			],
 			"commandPalette": [
 			],
@@ -83,12 +154,22 @@
 						"type": "string",
 						"default": "",
 						"description": "The location of Neo Java Web SDK"
-					} 
+					}
 				}
 			},
 			{
-				"title": "Java Web Tomcat",
+				"title": "Neo SDK Java Web Tomcat Server",
 				"properties": {
+					"neosdk.server.config": {
+						"type": "string",
+						"default": "",
+						"description": "The location of Neo Java Web SDK"
+					},
+					"neosdk.location": {
+						"type": "string",
+						"default": "",
+						"description": "The location of Neo Java Web SDK"
+					}
 				}
 			}
 		]
